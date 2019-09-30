@@ -6,7 +6,7 @@ public class Users {
     private String position;
     private String role;
     private int department_id;
-    private  int id;
+    private  int user_id;
 
     public Users(String position, String role, int department_id) {
         this.position = position;
@@ -38,12 +38,12 @@ public class Users {
         this.department_id = department_id;
     }
 
-    public int getId() {
-        return id;
+    public int getUser_idId() {
+        return user_id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setUser_id(int id) {
+        this.user_id = user_id;
     }
 
     @Override
@@ -52,13 +52,15 @@ public class Users {
         if (!(o instanceof Users)) return false;
         Users users = (Users) o;
         return department_id == users.department_id &&
-                id == users.id &&
+                user_id == users.user_id &&
                 Objects.equals(position, users.position) &&
                 Objects.equals(role, users.role);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(position, role, department_id, id);
+        return Objects.hash(position, role, department_id, user_id);
     }
+
+
 }
