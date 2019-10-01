@@ -3,27 +3,25 @@ SET MODE PostgreSQL;
 CREATE TABLE IF NOT EXISTS departments (
  id int PRIMARY KEY auto_increment,
  name VARCHAR,
- address VARCHAR,
- zipcode VARCHAR,
- phone VARCHAR,
- website VARCHAR,
- email VARCHAR
+ employees INTEGER,
+ description VARCHAR,
 );
 
 CREATE TABLE IF NOT EXISTS users (
- id int PRIMARY KEY auto_increment,
- name VARCHAR
+ user_id int PRIMARY KEY auto_increment,
+ department_id INTEGER,
+ positions VARCHAR,
+ role VARCHAR,
+
 );
 
 CREATE TABLE IF NOT EXISTS news (
- id int PRIMARY KEY auto_increment,
- writtenby VARCHAR,
+ heading VARCHAR,
  content VARCHAR,
- rating VARCHAR,
- restaurantid INTEGER
+ author VARCHAR,
 );
-CREATE TABLE IF NOT EXISTS departments_users (
- id int PRIMARY KEY auto_increment,
- department_id INTEGER,
- user_id INTEGER
-);
+--CREATE TABLE IF NOT EXISTS departments_users (
+-- id int PRIMARY KEY auto_increment,
+-- department_id INTEGER,
+-- user_id INTEGER
+--);

@@ -1,0 +1,21 @@
+{{#partial "content"}}
+
+    <h1></h1>
+
+    {{#if posts}}
+        {{#each posts}}
+            <div class="container">
+                    <p style="color:black;font-size:25px">Department's name:{{name}} </p>
+                    <p style="color:black;font-size:25px">Department's employees:{{employees}}</p>
+                    <p style="color:black;font-size:25px">Department's description:{{description}}</p>
+                    <br>
+            </div>
+
+        {{/each}}
+    {{else}}
+        <p style="text-align:center;margin-left:20%;color:white;font-size:25px">No department added</p>
+    {{/if}}
+
+{{/partial}}
+
+{{> layout.hbs}}

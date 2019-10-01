@@ -27,17 +27,17 @@ public class News {
         this.department_news = department_news;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof News)) return false;
-        News news = (News) o;
-        return Objects.equals(general_news, news.general_news) &&
-                Objects.equals(department_news, news.department_news);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(general_news, department_news);
-    }
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (!(o instanceof News)) return false;
+//        News news = (News) o;
+//        return Objects.equals(general_news, news.general_news) &&
+//                Objects.equals(department_news, news.department_news);
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(general_news, department_news);
+//    }
 }

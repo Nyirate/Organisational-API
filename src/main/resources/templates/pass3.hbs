@@ -1,0 +1,21 @@
+{{#partial "content"}}
+
+    <h1></h1>
+
+    {{#if posts}}
+        {{#each posts}}
+            <div class="container">
+                <p style="color:black;font-size:25px">User's department_id:{{department_id}} </p>
+                <p style="color:black;font-size:25px">User's positions:{{positions}}</p>
+                <p style="color:black;font-size:25px">User's role:{{role}}</p>
+                <br>
+            </div>
+
+        {{/each}}
+    {{else}}
+        <p style="text-align:center;margin-left:20%;color:white;font-size:25px">No user added</p>
+    {{/if}}
+
+{{/partial}}
+
+{{> layout.hbs}}
