@@ -1,0 +1,43 @@
+{{#partial "content"}}
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="well" style="width:45%;opacity:0.8;margin-left:51%;margin-top:7%">
+                <h1 style="font-weight:bold"></h1>
+
+                <form action="/" method="post">
+                    <label for="name" style="margin-left:7px;">Name</label>
+                    <input id="name" name="name" type="text" style="margin-left:8.2%;">
+                    <br>
+                    <br>
+                    <label for="age" style="margin-left:7px;">Age:  <br>
+                        <input type="radio" name="age" value="newborn"> Newborn<br>
+                        <input type="radio" name="age" value="young"> Young<br>
+                        <input type="radio" name="age" value="adult"> Adult
+                    </label>
+                    <br>
+                    <br>
+                    <label for="health" style="margin-left:7px;">Health:  <br>
+                        <input type="radio" name="health" value="healthy"> Healthy<br>
+                        <input type="radio" name="health" value="ill"> Ill<br>
+                        <input type="radio" name="health" value="okay"> Okay
+                    </label>
+                    <br>
+                    <br>
+                    <label for="value" style="margin-left:7px;">Endangered animal:  <br>
+                        <input type="radio" name="value" value="yes"> Yes<br>
+                        <input type="radio" name="value" value="no"> No<br>
+                    </label>
+                    <br>
+                    <br>
+                    <button type="submit" class="btn btn-default">Report</button>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
+{{/partial}}
+
+{{> layout.hbs}}
