@@ -34,16 +34,18 @@ public class App {
             int employees = Integer.parseInt(request.queryParams("employees"));
             String description = request.queryParams("description");
             Department newIdentity =new Department(name,employees,description);
+            newIdentity.save();
             model.put("name",newIdentity.getName());
             model.put("department",newIdentity);
-            return new ModelAndView(model,"pass1.hbs");
+            response.redirect("/three");
+            return new ModelAndView(model,"department.hbs");
         }, new HandlebarsTemplateEngine());
 
         get("/three",(request, response) -> {
             Map<String,Object> model = new HashMap<>();
-            ArrayList<Department> departs=Department.all();
+            List<Department> departs=Department.all();
             model.put("departs",departs);
-            return new ModelAndView(model,"department.hbs");
+            return new ModelAndView(model,"pass1.hbs");
         },new HandlebarsTemplateEngine());
 
 
@@ -57,23 +59,25 @@ public class App {
         //post: process user form
         post ("/five",(request, response) -> {
             Map<String,Object>model = new HashMap<>();
-            int department_id = Integer.parseInt(request.queryParams("department_id"));
             String positions =request.queryParams("positions");
+            int department_id = Integer.parseInt(request.queryParams("department_id"));
             String role = request.queryParams("role");
-            Users newUsersIdentity =new Users(department_id,positions,role);
-            model.put("department_id",newUsersIdentity.getDepartment_id());
+            Users newUsersIdentity =new Users(positions, department_id, role);
             model.put("positions",newUsersIdentity.getPositions());
+            model.put("department_id",newUsersIdentity.getDepartment_id());
             model.put("role",newUsersIdentity.getRole());
-            return new ModelAndView(model,"pass2.hbs");
+            newUsersIdentity.save();
+            response.redirect("/six");
+            return new ModelAndView(model,"user.hbs");
         }, new HandlebarsTemplateEngine());
 
 
         get("/six",(request, response) -> {
             Map<String, Object> model = new HashMap<>();
-            ArrayList<Users> user=Users.getAll();
+            List<Users> user=Users.all();
             System.out.println(user);
             model.put("user", user);
-            return new ModelAndView(model,"user.hbs");
+            return new ModelAndView(model,"pass2.hbs");
         },new HandlebarsTemplateEngine());
 
         //get: news form
@@ -90,19 +94,22 @@ public class App {
         String news = request.queryParams("news");
         String content = request.queryParams("content");
         News newNewsIdentity =new News(heading, news, content);
+        newNewsIdentity.save();
         model.put("heading",newNewsIdentity.getHeading());
         model.put("news",newNewsIdentity.getNews());
         model.put("content",newNewsIdentity.getContent());
-        return new ModelAndView(model,"pass3.hbs");
+        response.redirect("/nine");
+        return new ModelAndView(model,"news.hbs");
     }, new HandlebarsTemplateEngine());
 
 
     get("/nine",(request, response) -> {
         Map<String, Object> model = new HashMap<>();
-        ArrayList<News> news= News.getAll();
+        List<News> news= News.all();
         System.out.println(news);
         model.put("news", news);
-        return new ModelAndView(model,"news.hbs");
+
+        return new ModelAndView(model,"pass3.hbs");
     },new HandlebarsTemplateEngine());
 
     }

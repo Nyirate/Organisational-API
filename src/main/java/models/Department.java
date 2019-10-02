@@ -1,10 +1,13 @@
 package models;
 
 import org.sql2o.Connection;
+import org.sql2o.Sql2oException;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+import static models.DB.sql2o;
 
 public class Department {
     private String name;
@@ -18,9 +21,6 @@ public class Department {
         this.description = description;
     }
 
-    public static ArrayList<Department> all() {
-        return null;
-    }
 
     public String getName() {
         return name;
@@ -54,20 +54,26 @@ public class Department {
         this.id = id;
     }
 
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (!(o instanceof Department)) return false;
-//        Department that = (Department) o;
-//        return id == that.id &&
-//                employees == that.employees &&
-//                Objects.equals(name, that.name) &&
-//                Objects.equals(description, that.description);
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(name, id, employees, description);
-//    }
+    public void save() {
+        try(org.sql2o.Connection con = sql2o.open()) {
+            String sql = "INSERT INTO department (name, employees, description) VALUES (:name, :employees, :description)";
+            this.id = (int) con.createQuery(sql, true)
+                    .addParameter("name", this.name)
+                    .addParameter("employees", this.employees)
+                    .addParameter("description", this.description)
+                    .throwOnMappingFailure(false)
+                    .executeUpdate()
+                    .getKey();
+        }
+    }
+    public static List<Department> all() {
+
+        String s="select * from department;";
+        try(Connection con = sql2o.open()){
+            return con.createQuery(s).executeAndFetch(Department.class);
+        }
+    }
+    public void deleteById(int id) {
+    }
 
 }
