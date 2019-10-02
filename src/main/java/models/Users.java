@@ -1,5 +1,6 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Users {
@@ -14,6 +15,11 @@ public class Users {
         this.role = role;
 
     }
+
+    public static ArrayList<Users> getAll() {
+        return  null;
+    }
+
     public int getDepartment_id() {
         return department_id;
     }

@@ -2,6 +2,7 @@ package models;
 
 import org.sql2o.Connection;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -15,6 +16,10 @@ public class Department {
         this.name = name;
         this.employees = employees;
         this.description = description;
+    }
+
+    public static ArrayList<Department> all() {
+        return null;
     }
 
     public String getName() {

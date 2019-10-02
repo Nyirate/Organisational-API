@@ -2,18 +2,18 @@
 
     <h1></h1>
 
-    {{#if posts}}
-        {{#each posts}}
+    {{#if news}}
+        {{#each news}}
             <div class="container">
-                <p style="color:black;font-size:25px">User's department_id:{{department_id}} </p>
-                <p style="color:black;font-size:25px">User's positions:{{positions}}</p>
-                <p style="color:black;font-size:25px">User's role:{{role}}</p>
+                <p style="color:black;font-size:25px">News' heading:{{heading}} </p>
+                <p style="color:black;font-size:25px">News' news:{{news}}</p>
+                <p style="color:black;font-size:25px">News' content:{{content}}</p>
                 <br>
             </div>
 
         {{/each}}
     {{else}}
-        <p style="text-align:center;margin-left:20%;color:white;font-size:25px">No user added</p>
+        <p style="text-align:center;margin-left:20%;color:white;font-size:25px">No news added</p>
     {{/if}}
 
 {{/partial}}
